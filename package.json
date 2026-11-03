@@ -1,0 +1,34 @@
+{
+  "name": "hospital-appointment-doctor-recommendation-system",
+  "version": "1.0.0",
+  "description": "A database-driven hospital appointment management and doctor recommendation system.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Git-Aaron101/hospital-appointment-doctor-recommendation-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Git-Aaron101/hospital-appointment-doctor-recommendation-system/issues"
+  },
+  "homepage": "https://github.com/Git-Aaron101/hospital-appointment-doctor-recommendation-system#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "jose": "^6.2.15",
+    "mysql2": "^3.24.6",
+    "next": "^16.4.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}
