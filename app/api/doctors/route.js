@@ -54,7 +54,7 @@ export async function GET(request) {
         SELECT
           da.Availability_ID,
           da.Doctor_ID,
-          da.Available_Date,
+          DATE_FORMAT(da.Available_Date, '%Y-%m-%d') AS Available_Date,
           da.Start_Time,
           da.End_Time
         FROM DOCTOR_AVAILABILITY da
@@ -64,6 +64,7 @@ export async function GET(request) {
           ON da.Availability_ID = a.Availability_ID
         WHERE da.Doctor_ID = ?
           AND d.Is_Active = 1
+          AND da.Is_Deleted = 0
           AND da.Available_Date >= CURDATE()
           AND (
             a.Appointment_ID IS NULL

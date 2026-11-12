@@ -60,6 +60,7 @@ export default function Home() {
 
   return (
     <main className="container">
+
       <nav className="home-nav">
         <div className="home-nav-brand">
           Hospital Appointment System
@@ -78,6 +79,10 @@ export default function Home() {
                 My Appointments
               </Link>
 
+              <Link href="/recommendations">
+                Find Recommended Doctors
+              </Link>
+
               <button
                 type="button"
                 className="nav-logout"
@@ -89,7 +94,11 @@ export default function Home() {
             </>
           ) : (
             <>
-              <Link href="/login">Login</Link>
+              <Link href="/login">Patient Login</Link>
+
+              <Link href="/doctor-login">
+                Doctor Login
+              </Link>
 
               <Link href="/register" className="nav-register">
                 Register
@@ -99,12 +108,81 @@ export default function Home() {
         </div>
       </nav>
 
-      <h1>Hospital Appointment System</h1>
+      <section className="role-hero">
+        <h1>Welcome to Hospital Appointment System</h1>
 
-      <p>
-        Book hospital appointments and find doctors based on their
-        departments and specializations.
-      </p>
+        <p>
+          Your healthcare journey starts here.
+          Book appointments, discover doctors, and manage
+          your healthcare experience in one place.
+        </p>
+
+        {!checkingAuth && !patient && (
+          <div className="role-selection">
+
+            <div className="role-card">
+              <div className="role-icon">👤</div>
+
+              <h2>Patient Portal</h2>
+
+              <p>
+                Find doctors, explore specializations,
+                book appointments, and get personalized
+                doctor recommendations.
+              </p>
+
+              <Link
+                href="/login"
+                className="role-button patient-button"
+              >
+                Patient Login
+              </Link>
+
+              <p className="role-register">
+                New patient?{" "}
+                <Link href="/register">Create an account</Link>
+              </p>
+            </div>
+
+            <div className="role-card">
+              <div className="role-icon">🩺</div>
+
+              <h2>Doctor Portal</h2>
+
+              <p>
+                Manage your appointments, view patient
+                details, update appointment status,
+                and manage your availability.
+              </p>
+
+              <Link
+                href="/doctor-login"
+                className="role-button doctor-button"
+              >
+                Doctor Login
+              </Link>
+            </div>
+
+          </div>
+        )}
+
+        {!checkingAuth && patient && (
+          <div className="patient-welcome">
+            <h2>Welcome back, {patient.First_Name}!</h2>
+            <p>What would you like to do today?</p>
+
+            <div className="patient-actions">
+              <Link href="/appointments" className="role-button patient-button">
+                My Appointments
+              </Link>
+
+              <Link href="/recommendations" className="role-button doctor-button">
+                Find Recommended Doctors
+              </Link>
+            </div>
+          </div>
+        )}
+      </section>
 
       <section className="feature-grid">
         <div className="feature-card">
@@ -118,14 +196,18 @@ export default function Home() {
         </div>
 
         <div className="feature-card">
-          <h2>My Appointments</h2>
-          <p>View and manage your appointment history.</p>
+          <h2>Doctor Recommendations</h2>
+          <p>
+            Discover doctors based on your preferences
+            and healthcare requirements.
+          </p>
         </div>
       </section>
 
       <DepartmentsList />
       <DoctorsList />
       <AvailabilityList />
+
     </main>
   );
 }
